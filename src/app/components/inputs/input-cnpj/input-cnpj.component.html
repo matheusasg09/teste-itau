@@ -1,0 +1,28 @@
+<mat-form-field appearance="outline" class="w-100">
+  <mat-label>
+    {{ label }}
+    <span *ngIf="isRequired" class="text-danger">*</span>
+  </mat-label>
+  <input
+    matInput
+    type="text"
+    autocomplete="off"
+    [formControl]="control"
+    (blur)="validateField()"
+    mask="00.000.000/0000-00"
+  />
+  <mat-icon *ngIf="icon || (control.errors && wasValidated)" matSuffix>
+    {{ control.errors ? "close" : icon }}
+  </mat-icon>
+  <mat-icon
+    *ngIf="icon || (control.value && !control.errors && wasValidated)"
+    matSuffix
+    >done</mat-icon
+  >
+  <mat-error *ngIf="control.hasError('required')"
+    >Este campo é obrigatório</mat-error
+  >
+  <mat-error *ngIf="control.hasError('invalidCnpj')"
+    >Digite o CNPJ corretamente</mat-error
+  >
+</mat-form-field>

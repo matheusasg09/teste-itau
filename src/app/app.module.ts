@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +10,8 @@ import { PagesModule } from './pages/pages.module';
 import { PipesModule } from './pipes/pipes.module';
 import { SharedModule } from './shared/shared.module';
 import { NgxMaskModule } from 'ngx-mask';
+import { LOCALE_ID } from '@angular/core';
+
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -28,7 +30,13 @@ import { ToastrModule } from 'ngx-toastr';
     DirectivesModule,
     PagesModule,
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+    {
+      provide: DEFAULT_CURRENCY_CODE,
+      useValue: 'BRL',
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,4 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.Swal__cancelButton {
+  background-color: white !important;
+  color: #595959 !important;
+  box-shadow: inset 0 0 0 2px #7030a3 !important;
+  transition: background 0.5s;
+
+  &:hover {
+    background-color: #f8f0fe !important;
+    background-image: none !important;
+  }
+}

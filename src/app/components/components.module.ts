@@ -5,6 +5,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { InputsModule } from './inputs/inputs.module';
 
 const COMPONENTS = [LoaderComponent, ButtonComponent];
 
@@ -12,10 +13,13 @@ const COMPONENTS = [LoaderComponent, ButtonComponent];
   declarations: [...COMPONENTS],
   imports: [
     CommonModule,
-    MatProgressSpinnerModule,
     RouterModule,
+
     MatButtonModule,
+    MatProgressSpinnerModule,
+
+    InputsModule,
   ],
-  exports: [...COMPONENTS],
+  exports: [...COMPONENTS, InputsModule],
 })
 export class ComponentsModule {}
