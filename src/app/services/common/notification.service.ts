@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { SweetAlertOptions } from 'sweetalert2';
+import { from, Observable, pluck } from 'rxjs';
+import Swal, { SweetAlertOptions } from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
