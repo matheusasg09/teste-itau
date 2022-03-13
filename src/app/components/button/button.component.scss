@@ -1,0 +1,22 @@
+a,
+button {
+  height: 50px;
+  width: 170px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+
+  &.mat-raised-button.button-disabled {
+    background-color: gray !important;
+    pointer-events: none;
+  }
+}
+
+a.mat-stroked-button,
+button.mat-stroked-button {
+  border: 2px solid #3f51b5 !important;
+  color: #3f51b5;
+  background-color: white;
+}

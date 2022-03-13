@@ -1,0 +1,6 @@
+<div class="loader-container" *ngIf="showLoader$ | async">
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <mat-spinner></mat-spinner>
+    <p class="mt-3">{{ loaderText$ | async }}</p>
+  </div>
+</div>
