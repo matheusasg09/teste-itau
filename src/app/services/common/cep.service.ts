@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CEP } from '../../models/CEP.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 export class CEPService {
   constructor(private http: HttpClient) {}
 
-  getCep(CEP: string): Observable<any> {
+  getCep(CEP: string): Observable<CEP> {
     const CEPDigitsOnly = CEP.replace(/\D/g, '');
     const validateCEP = /^[0-9]{8}$/;
 
@@ -16,6 +17,7 @@ export class CEPService {
       throw new Error('CEP inválido');
     }
     const url = `https://viacep.com.br/ws/${CEPDigitsOnly}/json/`;
-    return this.http.get<any>(url);
+
+    return this.http.get<CEP>(url);
   }
 }

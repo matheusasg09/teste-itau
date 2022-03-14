@@ -1,0 +1,40 @@
+{
+  "companies": [
+    {
+      "id": 1,
+      "name": "Itaú BBA",
+      "business": "Fincancial Center",
+      "valuation": 850000000.5,
+      "active": true,
+      "cep": "01001-000",
+      "cnpj": 60701190000104
+    },
+    {
+      "id": 2,
+      "name": "Itaú Ceic",
+      "business": "Centro Empresarial Itaú",
+      "valuation": 54000000.45,
+      "active": true,
+      "cep": "01001-000",
+      "cnpj": 60701190000104
+    },
+    {
+      "id": 3,
+      "name": "Cubo Itaú",
+      "business": "Startups Center",
+      "valuation": 22000000000.2,
+      "active": true,
+      "cep": "01001-000",
+      "cnpj": 60701190000104
+    },
+    {
+      "id": 4,
+      "name": "Itaú Disabled",
+      "business": "Polo Fake",
+      "valuation": 0.0,
+      "active": false,
+      "cep": "01001-000",
+      "cnpj": 60701190000104
+    }
+  ]
+}

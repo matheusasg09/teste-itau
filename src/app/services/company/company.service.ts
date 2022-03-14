@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IBusiness } from 'src/app/interfaces/Company.interface';
+import { IBusiness } from 'src/app/models/Company.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class CompanyService {
   constructor(private http: HttpClient) {}
 
-  getCompanys(): Observable<IBusiness[]> {
+  getCompanies(): Observable<IBusiness[]> {
     const url = environment.api.empresas;
 
     return this.http.get<IBusiness[]>(url);
