@@ -18,3 +18,64 @@ body {
     background-image: none !important;
   }
 }
+
+mat-form-field {
+  &.mat-focused {
+    .mat-form-field-outline {
+      box-shadow: 0px 4px 5px -2px #ff7a23;
+    }
+
+    &.mat-form-field-appearance-outline .mat-form-field-outline {
+      color: #ff7a23;
+    }
+
+    &.ng-invalid.ng-touched {
+      .mat-form-field-outline {
+        box-shadow: 0px 4px 5px -2px #e74c3c;
+      }
+    }
+    &:not(.ng-invalid.ng-touched) {
+      .mat-form-field-label {
+        color: #ff7a23 !important;
+      }
+    }
+  }
+
+  &.ng-invalid.ng-touched .mat-icon.material-icons {
+    color: #e74c3c;
+  }
+
+  &.ng-valid.ng-touched .mat-icon.material-icons {
+    color: #e74c3c;
+  }
+}
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  white-space: nowrap;
+  padding: 0 24px !important;
+}
+
+th.mat-header-cell {
+  background-color: #efefef;
+}
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: #ffe0cc;
+}
+
+.mat-flat-button.mat-primary,
+.mat-raised-button.mat-primary,
+.mat-fab.mat-primary,
+.mat-mini-fab.mat-primary {
+  background-color: #fa8341 !important;
+}
+
+.mat-flat-button.mat-accent,
+.mat-raised-button.mat-accent,
+.mat-fab.mat-accent,
+.mat-mini-fab.mat-accent {
+  background-color: #989898;
+}

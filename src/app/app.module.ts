@@ -13,6 +13,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { LOCALE_ID } from '@angular/core';
 
 import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
 
     NgxMaskModule.forRoot({ validation: true }),
     ToastrModule.forRoot(),
