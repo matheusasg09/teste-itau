@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { IBusiness } from 'src/app/models/Company.interface';
 import { LoaderService } from 'src/app/services/common/loader.service';
 import { NotificationService } from 'src/app/services/common/notification.service';
+import { CompanyService } from 'src/app/services/company/company.service';
 
 @Component({
   templateUrl: './home.component.html',
@@ -19,10 +20,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   constructor(
     private loaderSerivce: LoaderService,
-    private notificationSerivce: NotificationService
+    private notificationSerivce: NotificationService,
+    private companyService: CompanyService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getCompanies();
+  }
 
   ngAfterViewInit(): void {
     this.paginator._intl.itemsPerPageLabel = 'Itens por página';
@@ -30,7 +34,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  goToDetailCompany(company: IBusiness): void {}
+  goToDetailCompany(company: IBusiness): void {
+    console.log(company);
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -39,5 +45,25 @@ export class HomeComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  private getCompanies(): void {
+    this.loaderSerivce.show('Carregando Empresas...');
+
+    setTimeout(() => {
+      this.companyService
+        .getCompanies()
+        .subscribe({
+          next: (companies) => {
+            this.dataSource.data = companies;
+          },
+          error: () => {
+            this.notificationSerivce.error('Erro ao carregar empresas');
+          },
+        })
+        .add(() => {
+          this.loaderSerivce.hide();
+        });
+    }, 0);
   }
 }

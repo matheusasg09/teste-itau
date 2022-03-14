@@ -1,10 +1,10 @@
 const microServices = {
-  company: 'https://60820a0e827b350017cfbaea.mockapi.io/api',
+  company: 'https://my-json-server.typicode.com/matheusasg09/teste-itau',
 };
 
 export const environment = {
   production: false,
   api: {
-    empresas: `${microServices.company}/v1/itau_teste`,
+    info: `${microServices.company}/companies`,
   },
 };

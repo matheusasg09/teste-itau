@@ -11,13 +11,13 @@ export class CompanyService {
   constructor(private http: HttpClient) {}
 
   getCompanies(): Observable<IBusiness[]> {
-    const url = environment.api.empresas;
+    const url = environment.api.info;
 
     return this.http.get<IBusiness[]>(url);
   }
 
   getCompany(id: number): Observable<IBusiness> {
-    const url = `${environment.api.empresas}/${id}`;
+    const url = `${environment.api.info}/${id}`;
 
     return this.http.get<IBusiness>(url);
   }

@@ -1,49 +1,60 @@
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h1 class="fw-bold">Polos Itaú</h1>
-    <span>confira abaixo alguns dos principais ploso do itaú</span>
+<div class="mx-5">
+  <div class="row mt-5">
+    <div class="col-md-8">
+      <h1 class="fw-bold mb-0">Polos Itaú</h1>
+      <span>confira abaixo alguns dos principais ploso do itaú</span>
+    </div>
+    <mat-form-field appearance="outline" class="col-md-4">
+      <mat-label>Pesquisar</mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input />
+    </mat-form-field>
   </div>
-</div>
 
-<div class="overflow-auto shadow rounded mt-4">
-  <table
-    class="w-100 mt-3 table-hover"
-    mat-table
-    [dataSource]="dataSource"
-    matSort
-    matSortDirection="asc"
-  >
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
-      <td mat-cell *matCellDef="let company">{{ company.name }}</td>
-    </ng-container>
+  <div class="overflow-auto shadow rounded mt-3">
+    <table
+      class="w-100 table-hover"
+      mat-table
+      [dataSource]="dataSource"
+      matSort
+      matSortDirection="asc"
+    >
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+        <td mat-cell *matCellDef="let company">{{ company.name }}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="business">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Business</th>
-      <td mat-cell *matCellDef="let company">{{ company.business }}</td>
-    </ng-container>
+      <ng-container matColumnDef="business">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Business</th>
+        <td mat-cell *matCellDef="let company">{{ company.business }}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="valuation">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Valuation</th>
-      <td mat-cell *matCellDef="let company">{{ company.valuation }}</td>
-    </ng-container>
+      <ng-container matColumnDef="valuation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Valuation</th>
+        <td mat-cell *matCellDef="let company">
+          {{ company.valuation }}
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="active">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Situação</th>
-      <td mat-cell *matCellDef="let company">{{ company.active }}</td>
-    </ng-container>
+      <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef class="text-center">Situação</th>
+        <td mat-cell *matCellDef="let company" class="text-center">
+          <span
+            [ngClass]="company.active ? 'active-status' : 'not-active-status'"
+          ></span>
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Ação</th>
-      <td mat-cell *matCellDef="let company">
-        <button mat-menu-item (click)="goToDetailCompany(company)">
-          <mat-icon>remove_red_eye</mat-icon>
-          <span>Visualizar</span>
-        </button>
-      </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
-  <mat-paginator [pageSizeOptions]="[5, 10, 20, 50]"></mat-paginator>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="text-center">Ação</th>
+        <td mat-cell *matCellDef="let company" class="text-center">
+          <button mat-icon-button (click)="goToDetailCompany(company)">
+            <mat-icon>remove_red_eye</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 50]"></mat-paginator>
+  </div>
 </div>

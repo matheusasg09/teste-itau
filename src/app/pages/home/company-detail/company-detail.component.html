@@ -1,72 +1,77 @@
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h1 class="fw-bold">Polo Itaú BBA</h1>
-    <span>exibindo detalhes do polo Itaú BBA</span>
+<div class="mx-5">
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <h1 class="fw-bold">Polo Itaú BBA</h1>
+      <span>exibindo detalhes do polo Itaú BBA</span>
+    </div>
   </div>
-</div>
-<div class="mt-4">
-  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-    <div class="row mb-3">
-      <span>Detalhes do Endereço</span>
-      <mat-form-field class="col-md-2" appearance="outline">
-        <mat-label>CEP</mat-label>
-        <input matInput formControlName="cep" (blur)="getCEP()" />
-      </mat-form-field>
+  <div class="mt-4">
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <div class="row mb-3">
+        <span>Detalhes do Endereço</span>
+        <mat-form-field class="col-md-2" appearance="outline">
+          <mat-label>CEP</mat-label>
+          <input matInput formControlName="cep" (blur)="getCEP()" />
+        </mat-form-field>
 
-      <mat-form-field class="col-md-4" appearance="outline">
-        <mat-label>Nome da Rua</mat-label>
-        <input matInput formControlName="rua" [readonly]="cepComplete" />
-      </mat-form-field>
+        <mat-form-field class="col-md-4" appearance="outline">
+          <mat-label>Nome da Rua</mat-label>
+          <input matInput formControlName="rua" [readonly]="cepComplete" />
+        </mat-form-field>
 
-      <mat-form-field class="col-md-2" appearance="outline">
-        <mat-label>Bairro</mat-label>
-        <input matInput formControlName="bairro" [readonly]="cepComplete" />
-      </mat-form-field>
+        <mat-form-field class="col-md-2" appearance="outline">
+          <mat-label>Bairro</mat-label>
+          <input matInput formControlName="bairro" [readonly]="cepComplete" />
+        </mat-form-field>
 
-      <mat-form-field class="col-md-2" appearance="outline">
-        <mat-label>Estado</mat-label>
-        <input matInput formControlName="estado" [readonly]="cepComplete" />
-      </mat-form-field>
+        <mat-form-field class="col-md-2" appearance="outline">
+          <mat-label>Estado</mat-label>
+          <input matInput formControlName="estado" [readonly]="cepComplete" />
+        </mat-form-field>
 
-      <mat-form-field class="col-md-2" appearance="outline">
-        <mat-label>Cidade</mat-label>
-        <input matInput formControlName="cidade" [readonly]="cepComplete" />
-      </mat-form-field>
-    </div>
-    <div class="row mb-3">
-      <span>Detalhes da Empresa</span>
-      <mat-form-field class="col-md-2" appearance="outline">
-        <mat-label>Nome</mat-label>
-        <input matInput formControlName="name" />
-      </mat-form-field>
+        <mat-form-field class="col-md-2" appearance="outline">
+          <mat-label>Cidade</mat-label>
+          <input matInput formControlName="cidade" [readonly]="cepComplete" />
+        </mat-form-field>
+      </div>
+      <div class="row mb-3">
+        <span>Detalhes da Empresa</span>
+        <mat-form-field class="col-md-2" appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="name" />
+        </mat-form-field>
 
-      <mat-form-field class="col-md-2" appearance="outline">
-        <mat-label>Business</mat-label>
-        <input matInput formControlName="business" />
-      </mat-form-field>
+        <mat-form-field class="col-md-2" appearance="outline">
+          <mat-label>Business</mat-label>
+          <input matInput formControlName="business" />
+        </mat-form-field>
 
-      <mat-form-field class="col-md-2" appearance="outline">
-        <mat-label>Valuation</mat-label>
-        <input matInput formControlName="valuation" />
-      </mat-form-field>
+        <mat-form-field class="col-md-2" appearance="outline">
+          <mat-label>Valuation</mat-label>
+          <input matInput formControlName="valuation" />
+        </mat-form-field>
 
-      <app-input-cnpj class="col-md-2" formControlName="cnpj"></app-input-cnpj>
+        <app-input-cnpj
+          class="col-md-2"
+          formControlName="cnpj"
+        ></app-input-cnpj>
 
-      <mat-form-field class="col-md-2" appearance="outline">
-        <mat-label>Ativo?</mat-label>
-        <mat-select formControlName="active">
-          <mat-option value="ativo"> Ativo </mat-option>
-          <mat-option value="inativo"> Inativo </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="d-flex">
-      <button mat-raised-button color="accent" type="button" class="me-3">
-        Voltar
-      </button>
-      <button mat-raised-button color="primary" type="submit" class="px-5">
-        Salvar
-      </button>
-    </div>
-  </form>
+        <mat-form-field class="col-md-2" appearance="outline">
+          <mat-label>Ativo?</mat-label>
+          <mat-select formControlName="active">
+            <mat-option value="ativo"> Ativo </mat-option>
+            <mat-option value="inativo"> Inativo </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="d-flex">
+        <button mat-raised-button color="accent" type="button" class="me-3">
+          Voltar
+        </button>
+        <button mat-raised-button color="primary" type="submit" class="px-5">
+          Salvar
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
