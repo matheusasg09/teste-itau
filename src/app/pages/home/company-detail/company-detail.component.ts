@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IBusiness } from 'src/app/models/Company.interface';
 import { CEPService } from 'src/app/services/common/cep.service';
 import { LoaderService } from 'src/app/services/common/loader.service';
@@ -22,12 +22,13 @@ export class CompanyDetailComponent implements OnInit {
     private formBuilder: FormBuilder,
     private CEPService: CEPService,
     private activatedRoute: ActivatedRoute,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.getRouteParams();
     this.buildForm();
+    this.getRouteParams();
   }
 
   onSubmit(): void {
@@ -43,10 +44,14 @@ export class CompanyDetailComponent implements OnInit {
       .subscribe((isConfirmed) => {
         if (isConfirmed) {
           this.notificationSerivce.success('Informações Alteradas com Sucesso');
-          console.log(this.formGroup.getRawValue());
+          this.router.navigateByUrl('');
           return;
         }
       });
+  }
+
+  goToHome(): void {
+    this.router.navigateByUrl('');
   }
 
   getCEP(): void {
@@ -104,26 +109,18 @@ export class CompanyDetailComponent implements OnInit {
     });
   }
 
-  private checkFormValidations(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach((field) => {
-      const control = formGroup.get(field);
-      control?.markAsDirty();
-      control?.markAsTouched();
-    });
-  }
-
   private buildForm(): void {
     this.formGroup = this.formBuilder.group({
-      cep: [null],
-      rua: [null],
-      bairro: [null],
-      estado: [null],
-      cidade: [null],
-      name: [null],
-      business: [null],
-      valuation: [null],
-      cnpj: [null, [Validators.required]],
-      active: [null],
+      cep: null,
+      rua: null,
+      bairro: null,
+      estado: null,
+      cidade: null,
+      name: null,
+      business: null,
+      valuation: null,
+      cnpj: null,
+      active: null,
     });
   }
 }

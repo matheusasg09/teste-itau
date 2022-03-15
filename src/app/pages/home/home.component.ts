@@ -19,8 +19,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<IBusiness>();
   displayedColumns = ['name', 'business', 'valuation', 'active', 'actions'];
 
-  selectedCompany!: IBusiness;
-
   constructor(
     private loaderSerivce: LoaderService,
     private notificationSerivce: NotificationService,
@@ -34,6 +32,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.paginator._intl.itemsPerPageLabel = 'Itens por página';
+    this.paginator._intl.getRangeLabel = (
+      page: number,
+      pageSize: number,
+      length: number
+    ) =>
+      `${page + 1} de ${
+        pageSize > length ? length : pageSize
+      } de um total de ${length} registros`;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -69,6 +75,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
         .add(() => {
           this.loaderSerivce.hide();
         });
-    }, 2500);
+    }, 2000);
   }
 }

@@ -1,14 +1,17 @@
-<div class="mx-5">
+<div class="container">
   <div class="row mt-5">
     <div class="col-md-6">
-      <h1 class="fw-bold">Polo Itaú BBA</h1>
-      <span>exibindo detalhes do polo Itaú BBA</span>
+      <h1 class="fw-bold mb-0">Polo {{ selectedCompany?.name }}</h1>
+      <p>
+        exibindo detalhes do polo {{ selectedCompany?.name }} #
+        {{ selectedCompany?.id }}
+      </p>
     </div>
   </div>
   <div class="mt-4">
     <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
       <div class="row mb-3">
-        <span>Detalhes do Endereço</span>
+        <span class="mb-3">Detalhes do Endereço</span>
         <mat-form-field class="col-md-2" appearance="outline">
           <mat-label>CEP</mat-label>
           <input matInput formControlName="cep" (blur)="getCEP()" />
@@ -35,7 +38,7 @@
         </mat-form-field>
       </div>
       <div class="row mb-3">
-        <span>Detalhes da Empresa</span>
+        <span class="mb-3">Detalhes da Empresa</span>
         <mat-form-field class="col-md-2" appearance="outline">
           <mat-label>Nome</mat-label>
           <input matInput formControlName="name" />
@@ -48,7 +51,14 @@
 
         <mat-form-field class="col-md-2" appearance="outline">
           <mat-label>Valuation</mat-label>
-          <input matInput formControlName="valuation" />
+          <input
+            matInput
+            formControlName="valuation"
+            prefix="R$ "
+            mask="separator.2"
+            thousandSeparator=" "
+            decimalMarker=","
+          />
         </mat-form-field>
 
         <app-input-cnpj
@@ -59,13 +69,19 @@
         <mat-form-field class="col-md-2" appearance="outline">
           <mat-label>Ativo?</mat-label>
           <mat-select formControlName="active">
-            <mat-option value="true"> Ativo </mat-option>
-            <mat-option value="false"> Inativo </mat-option>
+            <mat-option [value]="true"> Ativo </mat-option>
+            <mat-option [value]="false"> Inativo </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <div class="d-flex">
-        <button mat-raised-button color="accent" type="button" class="me-3">
+        <button
+          mat-raised-button
+          color="accent"
+          type="button"
+          (click)="goToHome()"
+          class="me-3"
+        >
           Voltar
         </button>
         <button mat-raised-button color="primary" type="submit" class="px-5">

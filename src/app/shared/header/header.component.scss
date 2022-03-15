@@ -1,15 +1,14 @@
-.bg-itau {
+.bg-header {
   background-color: #ffe0cc;
 }
 
-.border-itau {
+.border-header {
   border-bottom: 3px solid #ff7a23;
 }
 
 .user {
   font-size: 12px;
   font-weight: bold;
-  margin-bottom: 0px;
 }
 
 .user-description {
@@ -40,6 +39,10 @@
   font-size: 16px;
   color: #333333;
   font-weight: 500;
+}
+
+.line-height {
+  line-height: 12px;
 }
 
 img {

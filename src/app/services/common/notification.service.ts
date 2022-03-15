@@ -12,11 +12,12 @@ export class NotificationService {
     confirmButtonText: 'Confirmar',
     showCancelButton: true,
     cancelButtonText: 'Cancelar',
-    confirmButtonColor: '#7030a0',
+    confirmButtonColor: '#ff7a23',
     heightAuto: false,
     showCloseButton: true,
     customClass: {
       cancelButton: 'Swal__cancelButton',
+      confirmButton: 'Swal__confirmButton',
     },
   };
 
