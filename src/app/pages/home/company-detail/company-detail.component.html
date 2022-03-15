@@ -14,10 +14,15 @@
         <span class="mb-3">Detalhes do Endereço</span>
         <mat-form-field class="col-md-2" appearance="outline">
           <mat-label>CEP</mat-label>
-          <input matInput formControlName="cep" (blur)="getCEP()" />
+          <input
+            matInput
+            formControlName="cep"
+            mask="00000-000"
+            (blur)="getCEP()"
+          />
         </mat-form-field>
 
-        <mat-form-field class="col-md-4" appearance="outline">
+        <mat-form-field class="col-md-5" appearance="outline">
           <mat-label>Nome da Rua</mat-label>
           <input matInput formControlName="rua" readonly />
         </mat-form-field>
@@ -27,7 +32,7 @@
           <input matInput formControlName="bairro" readonly />
         </mat-form-field>
 
-        <mat-form-field class="col-md-2" appearance="outline">
+        <mat-form-field class="col-md-1" appearance="outline">
           <mat-label>Estado</mat-label>
           <input matInput formControlName="estado" readonly />
         </mat-form-field>
