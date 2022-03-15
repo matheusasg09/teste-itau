@@ -16,22 +16,22 @@
 
         <mat-form-field class="col-md-4" appearance="outline">
           <mat-label>Nome da Rua</mat-label>
-          <input matInput formControlName="rua" [readonly]="cepComplete" />
+          <input matInput formControlName="rua" readonly />
         </mat-form-field>
 
         <mat-form-field class="col-md-2" appearance="outline">
           <mat-label>Bairro</mat-label>
-          <input matInput formControlName="bairro" [readonly]="cepComplete" />
+          <input matInput formControlName="bairro" readonly />
         </mat-form-field>
 
         <mat-form-field class="col-md-2" appearance="outline">
           <mat-label>Estado</mat-label>
-          <input matInput formControlName="estado" [readonly]="cepComplete" />
+          <input matInput formControlName="estado" readonly />
         </mat-form-field>
 
         <mat-form-field class="col-md-2" appearance="outline">
           <mat-label>Cidade</mat-label>
-          <input matInput formControlName="cidade" [readonly]="cepComplete" />
+          <input matInput formControlName="cidade" readonly />
         </mat-form-field>
       </div>
       <div class="row mb-3">
@@ -59,8 +59,8 @@
         <mat-form-field class="col-md-2" appearance="outline">
           <mat-label>Ativo?</mat-label>
           <mat-select formControlName="active">
-            <mat-option value="ativo"> Ativo </mat-option>
-            <mat-option value="inativo"> Inativo </mat-option>
+            <mat-option value="true"> Ativo </mat-option>
+            <mat-option value="false"> Inativo </mat-option>
           </mat-select>
         </mat-form-field>
       </div>

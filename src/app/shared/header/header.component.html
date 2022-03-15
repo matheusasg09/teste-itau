@@ -1,11 +1,27 @@
 <mat-toolbar class="bg-itau border-itau py-5 justify-content-between">
   <div class="col-md-6">
-    <img class="ms-5" src="../../../assets/img/logo.png" alt="logo itaú" />
+    <img
+      [routerLink]="['']"
+      class="ms-5"
+      src="../../../assets/img/logo.png"
+      alt="logo itaú"
+    />
   </div>
   <div class="col-md-6">
-    <div class="d-flex justify-content-end me-5">
+    <div class="d-flex justify-content-end align-items-center me-5">
+      <span class="language">PT</span>
+      <span class="divider mx-4"></span>
+      <span class="user-picture me-2"></span>
       <span class="user">John Doe</span>
-      <mat-icon class="icon">keyboard_arrow_down</mat-icon>
+      <span class="user-description">Diretor Itaú BBA</span>
+      <div>
+        <button mat-button [matMenuTriggerFor]="menuUser">
+          <mat-icon class="icon">keyboard_arrow_down</mat-icon>
+        </button>
+      </div>
+      <mat-menu #menuUser="matMenu">
+        <button mat-menu-item>Sair</button>
+      </mat-menu>
     </div>
   </div>
 </mat-toolbar>

@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { IBusiness } from 'src/app/models/Company.interface';
 import { CEPService } from 'src/app/services/common/cep.service';
 import { LoaderService } from 'src/app/services/common/loader.service';
 import { NotificationService } from 'src/app/services/common/notification.service';
+import { CompanyService } from 'src/app/services/company/company.service';
 
 @Component({
   selector: 'app-company-detail',
@@ -11,30 +14,44 @@ import { NotificationService } from 'src/app/services/common/notification.servic
 })
 export class CompanyDetailComponent implements OnInit {
   formGroup!: FormGroup;
-  cepComplete: boolean = true;
+  selectedCompany!: IBusiness;
+
   constructor(
     private loaderSerivce: LoaderService,
     private notificationSerivce: NotificationService,
     private formBuilder: FormBuilder,
-    private CEPService: CEPService
+    private CEPService: CEPService,
+    private activatedRoute: ActivatedRoute,
+    private companyService: CompanyService
   ) {}
 
   ngOnInit(): void {
+    this.getRouteParams();
     this.buildForm();
   }
 
   onSubmit(): void {
-    this.formGroup.get('cnpj')?.markAsDirty();
     if (this.formGroup.invalid) {
-      this.checkFormValidations(this.formGroup);
       this.notificationSerivce.error('Formulário Inválido');
       return;
     }
-    console.log(this.formGroup.getRawValue());
+
+    this.notificationSerivce
+      .confirm({
+        text: 'Confirma as alterações?',
+      })
+      .subscribe((isConfirmed) => {
+        if (isConfirmed) {
+          this.notificationSerivce.success('Informações Alteradas com Sucesso');
+          console.log(this.formGroup.getRawValue());
+          return;
+        }
+      });
   }
 
   getCEP(): void {
     this.loaderSerivce.show('Carrendo Endereço...');
+
     const CEP = this.formGroup.get('cep')?.value;
 
     this.CEPService.getCep(CEP)
@@ -54,6 +71,37 @@ export class CompanyDetailComponent implements OnInit {
       .add(() => {
         this.loaderSerivce.hide();
       });
+  }
+
+  private getCompany(id: number): void {
+    this.loaderSerivce.show('Carregando detalhes...');
+
+    this.companyService
+      .getCompany(id)
+      .subscribe({
+        next: (response) => {
+          this.selectedCompany = response;
+          this.formGroup.patchValue(response);
+          this.getCEP();
+        },
+        error: () => {
+          this.notificationSerivce.error('Falha ao carregar detalhes');
+        },
+      })
+      .add(() => {
+        this.loaderSerivce.hide();
+      });
+  }
+
+  private getRouteParams(): void {
+    this.activatedRoute.queryParams.subscribe({
+      next: (data) => {
+        this.getCompany(data['id']);
+      },
+      error: () => {
+        this.notificationSerivce.error('Falha ao carregar detalhes');
+      },
+    });
   }
 
   private checkFormValidations(formGroup: FormGroup) {

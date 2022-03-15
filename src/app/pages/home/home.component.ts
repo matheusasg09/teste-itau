@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { IBusiness } from 'src/app/models/Company.interface';
 import { LoaderService } from 'src/app/services/common/loader.service';
 import { NotificationService } from 'src/app/services/common/notification.service';
@@ -18,10 +19,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<IBusiness>();
   displayedColumns = ['name', 'business', 'valuation', 'active', 'actions'];
 
+  selectedCompany!: IBusiness;
+
   constructor(
     private loaderSerivce: LoaderService,
     private notificationSerivce: NotificationService,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -35,7 +39,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   goToDetailCompany(company: IBusiness): void {
-    console.log(company);
+    this.router.navigate(['detail'], { queryParams: { id: company.id } });
   }
 
   applyFilter(event: Event) {
@@ -50,6 +54,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   private getCompanies(): void {
     this.loaderSerivce.show('Carregando Empresas...');
 
+    // Timeout apenas para simular requisição
     setTimeout(() => {
       this.companyService
         .getCompanies()
@@ -64,6 +69,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
         .add(() => {
           this.loaderSerivce.hide();
         });
-    }, 0);
+    }, 2500);
   }
 }

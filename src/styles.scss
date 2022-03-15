@@ -7,6 +7,11 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+h1,
+p {
+  letter-spacing: 0.1rem !important;
+}
+
 .Swal__cancelButton {
   background-color: white !important;
   color: #595959 !important;
