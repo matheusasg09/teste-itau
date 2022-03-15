@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <img alt="Frontend" src="img/Caravan-git.png" width="80%">
+  <img alt="Frontend" src="https://github.com/matheusasg09/teste-itau/blob/main/src/assets/img/itau-git.png" width="80%">
 </p>
 
 ## ◾ Teste
