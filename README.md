@@ -4,7 +4,7 @@
 
 <p align="center">
   
-  <img alt="GitHub commits" src="https://badgen.net/github/commits/matheusasg09/teste-itau">
+  <img alt="GitHub commits" src="https://badgen.net/github/commits/matheusasg09/Projeto-Ranek">
 
   <img  src="https://badgen.net/badge/stars/%E2%98%85%E2%98%85%E2%98%85%E2%98%85%E2%98%85">
   
