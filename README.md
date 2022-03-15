@@ -20,7 +20,7 @@
 
 Teste realizado para empresa Itáu. O teste foi focado no ecosistema do framework Angular, também foi configurado a pipeline para deploys automáticos na plataforma netlify.
 
-#### Visitar o sistema: [Teste Itau BBA](https://zealous-brown-460062.netlify.app/)
+#### Visitar o sistema: [Itau BBA](https://zealous-brown-460062.netlify.app/)
 
 ## ◾ Tecnologias
 

@@ -1,29 +1,35 @@
-<mat-toolbar class="bg-header border-header py-5 justify-content-between">
-  <div class="col-md-6">
-    <img
-      [routerLink]="['']"
-      class="ms-5"
-      src="../../../assets/img/logo.png"
-      alt="logo itaú"
-    />
-  </div>
-  <div class="col-md-6">
-    <div class="d-flex justify-content-end align-items-center me-5">
-      <span class="language">PT</span>
-      <span class="divider mx-4"></span>
-      <span class="user-picture me-2"></span>
-      <div class="line-height">
-        <span class="user">John Doe</span> <br />
-        <span class="user-description">Diretor Itaú BBA</span>
+<mat-toolbar class="bg-header border-header py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img
+          [routerLink]="['']"
+          src="../../../assets/img/logo.png"
+          alt="logo itaú"
+        />
       </div>
+      <div class="col-md-6">
+        <div
+          class="d-flex justify-content-end align-items-center"
+          style="margin-right: -20px"
+        >
+          <span class="language">PT</span>
+          <span class="divider mx-4"></span>
+          <span class="user-picture me-2"></span>
+          <div class="line-height">
+            <span class="user">John Doe</span> <br />
+            <span class="user-description">Diretor Itaú BBA</span>
+          </div>
 
-      <button mat-button [matMenuTriggerFor]="menuUser">
-        <mat-icon class="icon">keyboard_arrow_down</mat-icon>
-      </button>
+          <button mat-button [matMenuTriggerFor]="menuUser">
+            <mat-icon class="icon">keyboard_arrow_down</mat-icon>
+          </button>
 
-      <mat-menu #menuUser="matMenu">
-        <button mat-menu-item>Sair</button>
-      </mat-menu>
+          <mat-menu #menuUser="matMenu">
+            <button mat-menu-item>Sair</button>
+          </mat-menu>
+        </div>
+      </div>
     </div>
   </div>
 </mat-toolbar>
