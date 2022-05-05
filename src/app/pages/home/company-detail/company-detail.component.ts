@@ -56,12 +56,16 @@ export class CompanyDetailComponent implements OnInit {
 
   getCEP(): void {
     this.loaderSerivce.show('Carrendo Endereço...');
+    const CEP = this.formGroup.get('cep');
 
-    const CEP = this.formGroup.get('cep')?.value;
-
-    this.CEPService.getCep(CEP)
+    this.CEPService.getCep(CEP?.value)
       .subscribe({
         next: (response) => {
+          if (response.erro) {
+            this.notificationSerivce.warning('CEP Inválido');
+            CEP?.reset();
+            return;
+          }
           this.formGroup.patchValue({
             rua: response.logradouro,
             bairro: response.bairro,
@@ -111,7 +115,7 @@ export class CompanyDetailComponent implements OnInit {
 
   private buildForm(): void {
     this.formGroup = this.formBuilder.group({
-      cep: null,
+      cep: [null, [Validators.required]],
       rua: null,
       bairro: null,
       estado: null,

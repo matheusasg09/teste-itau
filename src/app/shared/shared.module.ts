@@ -14,10 +14,12 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     MatToolbarModule,
+
+    RouterModule,
+
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
-    RouterModule,
   ],
   exports: [HeaderComponent, FooterComponent],
 })

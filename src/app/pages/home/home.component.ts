@@ -31,17 +31,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.paginator._intl.itemsPerPageLabel = 'Itens por página';
-    this.paginator._intl.getRangeLabel = (
-      page: number,
-      pageSize: number,
-      length: number
-    ) =>
-      `${page + 1} de ${
-        pageSize > length ? length : pageSize
-      } de um total de ${length} registros`;
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.setGridConfigurations();
   }
 
   goToDetailCompany(company: IBusiness): void {
@@ -60,7 +50,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   private getCompanies(): void {
     this.loaderSerivce.show('Carregando Empresas...');
 
-    // Timeout apenas para simular requisição
+    // Timeout apenas para exibir o loader
     setTimeout(() => {
       this.companyService
         .getCompanies()
@@ -76,5 +66,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
           this.loaderSerivce.hide();
         });
     }, 2000);
+  }
+
+  private setGridConfigurations(): void {
+    this.paginator._intl.itemsPerPageLabel = 'Itens por página';
+    this.paginator._intl.getRangeLabel = (
+      page: number,
+      pageSize: number,
+      length: number
+    ) =>
+      `${page + 1} de ${
+        pageSize > length ? length : pageSize
+      } de um total de ${length} registros`;
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 }
